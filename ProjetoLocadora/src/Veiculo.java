@@ -1,25 +1,22 @@
-//Sistema de veiculos alugados
-//Uma locadora de veiculos precisa calcular o valor da diaria
-//De diferente tipos de veiculos carro e moto
-//Cada tipo tem seu priorio calculo.
-
-
-//Abstraçao 1
-//Modelar apenas o que importa: marca, modelo ano placa preco bae
-// metodo calcularDiaria()
-//Abstrato pois cada veiculo tera sua prioria diaria (calculo)
-
+// SISTEMA DE VEICULOS - 4 pilares da POO em Java
+// Uma locadora de veiculos precisa calcular o valor da diaria
+// de diferentes tipos de veiculos (Carro e Moto).
+// Cada tipo tem seu proprio calculo.
+//
+// PILAR 1 - ABSTRACAO
+// Modelar apenas o que importa: marca, modelo, ano, placa, preco base.
+// Metodo calcularDiaria()
+// Abstrato pois cada veiculo tera sua propria diaria (calculo)
 abstract class Veiculo {
 
-    //Atributos -> seguros
+    // PILAR 2 - ENCAPSULAMENTO: atributos privados com getters/setters
     private String marca;
     private String modelo;
     private int ano;
     private String placa;
     private double precoBase;
 
-    //Construtor da classe
-    public Veiculo(String marca, String modelo, int ano, String placa, double precoBase){
+    public Veiculo(String marca, String modelo, int ano, String placa, double precoBase) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
@@ -27,53 +24,47 @@ abstract class Veiculo {
         this.precoBase = precoBase;
     }
 
-    public abstract double caluclarDIaria();
+    // Metodo abstrato - cada subtipo define o calculo
+    public abstract double calcularDiaria();
 
-    //Encapsulamento
-
-    //Modificadore via get e set
-    //O set de precobase tem validaçao nao aceita valores negativos
-
+//modificadoção de GET e SET, (SET nao permite valores negativos)
     public String getMarca() {
         return marca;
     }
-    public String getModelo(){
+
+    public String getModelo() {
         return modelo;
     }
-    public String getPlaca () {
-        return placa;
-    }
-    public int ano(){
+
+    public int getAno() {
         return ano;
     }
-    public double getPrecoBase(){
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public double getPrecoBase() {
         return precoBase;
     }
-    public void setPrecoBase (double precoBase){
-        if (precoBase < 0){
-            System.out.println("Erro: Preço nao pode ser negativo");
+
+    public void setPrecoBase(double precoBase) {
+        if (precoBase < 0) {
+            System.out.println("Erro: preco nao pode ser negativo");
             return;
         }
+
         this.precoBase = precoBase;
     }
-    public String toString(){
-        return marca + " " + modelo + " (" + ano + ")";
+
+    public String exibirDados() {
+        return getMarca() + " " + getModelo() + " (" + getAno() + ")";
     }
-// PILAR 3 - HERANÇA
+}
+
+// herança
 // Carro e Moto herdam tudo de Veiculo, mas cada um adiciona
 // seus próprios atributos e implementa calcularDiaria() do seu jeito.
 
 //CARRO -> qtdPortas (atributo)
 // método calcularDiaria -> se qtdPortas >= 4 então acréscimo de 20%
-
-
-    abstract class Carro extends Veiculo {
-        private int quantidadePortas;
-
-        public Carro(String marca, String modelo, int ano, String placa, double precoBase, int quantidadePortas) {
-            super(marca, modelo, ano, placa, precoBase);
-            this.quantidadePortas = quantidadePortas;
-        }
-    }
-
-}
