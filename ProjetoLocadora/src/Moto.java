@@ -6,6 +6,6 @@ class Moto extends Veiculo {
 
     @Override
     public double calcularDiaria() {
-        return getPrecoBase() * 0.9; // 10% mais barato que o base
+        return getPrecoBase() * 0.9;
     }
 }

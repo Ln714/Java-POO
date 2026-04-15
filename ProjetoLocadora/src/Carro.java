@@ -1,4 +1,4 @@
- class Carro extends Veiculo {
+class Carro extends Veiculo {
 
     private int qtdPortas;
 
@@ -6,10 +6,12 @@
         super(marca, modelo, ano, placa, precoBase);
         this.qtdPortas = qtdPortas;
     }
-    public int getQtdPortas(){
+
+    public int getQtdPortas() {
         return qtdPortas;
     }
-     public void setQtdPortas (int quantidadePortas) {
+
+    public void setQtdPortas(int qtdPortas) {
         if (qtdPortas <= 0) {
             System.out.println("Erro: quantidade de portas inválida");
             return;
@@ -20,10 +22,8 @@
     @Override
     public double calcularDiaria() {
         if (qtdPortas >= 4) {
-            return getPrecoBase() * 1.2; // acréscimo de 20%
+            return getPrecoBase() * 1.2;
         }
         return getPrecoBase();
     }
 }
-
-
